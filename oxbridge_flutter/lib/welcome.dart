@@ -1,3 +1,5 @@
+import 'dart:html';
+import 'package:oxbridge_flutter/route_generator.dart';
 import 'package:flutter/material.dart';
 import 'events.dart';
 import 'http_service.dart';
@@ -15,11 +17,7 @@ class Home extends StatelessWidget {
         child: ElevatedButton(
           child: Text('Go to Registration'),
           onPressed: () {
-            Navigator.of(context).pushNamed('/User');
-            //Navigator.push(
-            //context,
-            //MaterialPageRoute(builder: (context) => User()),
-            //);
+            Navigator.of(context).pushNamed('/user');
           },
         ),
       ),
@@ -27,6 +25,7 @@ class Home extends StatelessWidget {
   }
 }
 
+// Side Menu with routes to different pages
 class NavDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -36,7 +35,7 @@ class NavDrawer extends StatelessWidget {
         children: <Widget>[
           DrawerHeader(
               child: Text(
-                'Side menu',
+                'Menu',
                 style: TextStyle(color: Colors.white, fontSize: 25),
               ),
               decoration: BoxDecoration(
@@ -46,33 +45,24 @@ class NavDrawer extends StatelessWidget {
                 //image: AssetImage('assets/images/cover.jpg')),
               )),
           ListTile(
-            leading: Icon(Icons.input),
+            leading: Icon(Icons.home),
             title: Text('Welcome'),
-            onTap: () => {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Home()),
-              ),
+            onTap: () {
+              Navigator.of(context).pushNamed('/');
             },
           ),
           ListTile(
             leading: Icon(Icons.verified_user),
             title: Text('Registration'),
-            onTap: () => {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => User()),
-              ),
+            onTap: () {
+              Navigator.of(context).pushNamed('/user');
             },
           ),
           ListTile(
-            leading: Icon(Icons.settings),
+            leading: Icon(Icons.sailing),
             title: Text('Events'),
-            onTap: () => {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Events()),
-              ),
+            onTap: () {
+              Navigator.of(context).pushNamed('/events');
             },
           ),
           ListTile(
