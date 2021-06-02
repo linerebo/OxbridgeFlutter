@@ -31,24 +31,3 @@ class HttpService {
   }
 }
 
-/*
-  static Future<Response> createUser(String firstname, String lastname,
-      String emailUsername, String password) async {
-    final Response response = await post(Uri.parse('$_baseUrl/users/register'),
-        headers: <String, String>{
-          'Content-Type': 'application/json;charset=UTF-8'
-        },
-        body: jsonEncode(<String, String>{
-          "firstname": firstname,
-          "lastname": lastname,
-          "emailUsername": emailUsername,
-          "password": password
-        }));
-    if (response.statusCode == 200) {
-      return User.fromJson(json.decode(response.body));
-    } else {
-      print('error');
-      throw Exception(response.body);
-    }
-  }
-}*/
