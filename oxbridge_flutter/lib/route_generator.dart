@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:oxbridge_flutter/main.dart';
-import 'package:oxbridge_flutter/user.dart';
-import 'package:oxbridge_flutter/events.dart';
-import 'package:oxbridge_flutter/welcome.dart';
+import 'user.dart';
+import 'events.dart';
+import 'welcome.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -13,9 +12,9 @@ class RouteGenerator {
       case '/':
         return MaterialPageRoute(builder: (_) => Home());
       case '/user':
-        return MaterialPageRoute(builder: (_) => User());
+        return MaterialPageRoute(builder: (_) => AddUser());
       case '/events':
-        return MaterialPageRoute(builder: (_) => Events());
+        return MaterialPageRoute(builder: (_) => GetEvents());
     }
     return _errorRoute();
   }

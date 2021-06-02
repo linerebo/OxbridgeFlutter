@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'navdrawer.dart';
 
-class Events extends StatelessWidget {
+class GetEvents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavDrawer(),
       appBar: AppBar(
         title: Text("Events Route"),
       ),

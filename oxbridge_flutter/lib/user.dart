@@ -1,91 +1,116 @@
+//import 'dart:html';
 import 'package:flutter/material.dart';
-import 'events.dart';
 import 'http_service.dart';
+import 'navdrawer.dart';
 
-
-class User extends StatefulWidget {
+class AddUser extends StatefulWidget {
   @override
-  UserState createState() =>
-      UserState(firstname: '', lastname: '', emailUsername: '', password: '');
+  UserState createState() => UserState();
 }
 
-class UserState extends State<User> {
-  String firstname;
-  String lastname;
-  String emailUsername;
-  String password;
+class UserState extends State<AddUser> {
+  late String firstname;
+  late String lastname;
+  late String emailUsername;
+  late String password;
 
-  UserState({
-    required this.firstname,
-    required this.lastname,
-    required this.emailUsername,
-    required this.password,
-  });
+  final _formKey = GlobalKey<FormState>();
+  final HttpService httpService = HttpService();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavDrawer(),
       appBar: AppBar(
         title: Text('Registration'),
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(15.0),
-          child: Column(children: <Widget>[
-            // first name input
-            TextField(
+      body: Form(
+        key: _formKey,
+        child: Column(
+          children: <Widget>[
+            //firstname
+            TextFormField(
               decoration: InputDecoration(
                   hintText: 'Enter first name', labelText: 'First Name'),
+              keyboardType: TextInputType.text,
               onChanged: (value) {
                 setState(() {
                   firstname = value;
                 });
               },
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter first name';
+                }
+                return null;
+              },
             ),
 
-            // last name input
-            TextField(
-              decoration: 
-                    InputDecoration(
+            //lastname
+            TextFormField(
+              decoration: InputDecoration(
                   hintText: 'Enter last name', labelText: 'Last Name'),
+              keyboardType: TextInputType.text,
               onChanged: (value) {
                 setState(() {
                   lastname = value;
                 });
               },
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter last name';
+                }
+                return null;
+              },
             ),
 
-            // email input
-            TextField(
-              decoration:
-                  InputDecoration(hintText: 'Enter email', labelText: 'Email'),
+            //email
+            TextFormField(
+              decoration: InputDecoration(
+                  hintText: 'Enter email address', labelText: 'Email address'),
+              keyboardType: TextInputType.text,
               onChanged: (value) {
                 setState(() {
                   emailUsername = value;
                 });
               },
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter email address';
+                }
+                return null;
+              },
             ),
 
-            // password input
-            TextField(
+            //password
+            TextFormField(
               decoration: InputDecoration(
                   hintText: 'Enter password', labelText: 'Password'),
+              keyboardType: TextInputType.text,
               onChanged: (value) {
                 setState(() {
                   password = value;
                 });
               },
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter password';
+                }
+                return null;
+              },
             ),
 
-            //Register button
             ElevatedButton(
-              child: Text('Submit'),
-              onPressed: () {
-                HttpService.createUser(
-                    firstname, lastname, emailUsername, password);
-              },
-            )
-          ]),
+                child: Text('Submit'),
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    httpService.createUser(
+                        firstname, lastname, emailUsername, password);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        (SnackBar(content: Text('New User has been created'))));
+                  }
+                }),
+          ],
         ),
       ),
     );

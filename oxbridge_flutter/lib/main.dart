@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'user.dart';
-import 'package:oxbridge_flutter/route_generator.dart';
+import 'route_generator.dart';
 
 //main
 void main() {
