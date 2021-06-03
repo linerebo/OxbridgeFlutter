@@ -7,7 +7,7 @@ class Event {
   final String city;
   final String eventCode;
 
-  Event({
+Event({
     required this.eventId,
     required this.name,
     required this.eventStart,
