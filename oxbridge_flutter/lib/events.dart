@@ -22,7 +22,7 @@ class GetEvents extends StatelessWidget {
                 ?.map((Event event) => ListTile(
                     title: Text(event.name),
                     tileColor: Colors.lightBlue.shade50,
-                    subtitle: Text("Start:  " + event.eventStart + "\n" + "End:    " + event.eventEnd)))
+                    subtitle: Text("Start:  " + event.eventStart + "\n" + "End:    " + event.eventEnd + "\n" + "City:   " + event.city)))
                 .toList();
             return ListView(children: mychildren ?? []);
           } else {
