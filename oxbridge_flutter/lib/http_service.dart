@@ -10,7 +10,7 @@ class HttpService {
   final String userURL = 'http://localhost:3000/users/register';
   //final String userURL = "http://192.168.178.46:3000/users/register";
 
-  final String eventsURL = "http://10.0.2.2:3000/events";
+  final String eventsURL = "http://localhost:3000/events";
 
   Future<User> createUser(String firstname, String lastname,
       String emailUsername, String password) async {
@@ -41,7 +41,7 @@ class HttpService {
   Future<List<Event>> getEvents() async {
     final Response response = await get(Uri.parse(eventsURL));
 
-    if (response.statusCode == 200) {
+    if (response.statusCode ~/100 == 2) {
       List<dynamic> body = jsonDecode(response.body);
 
       List<Event> events = body
