@@ -1,4 +1,5 @@
 
+//model class for Event
 class Event {
   final int eventId;
   final String name;

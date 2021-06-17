@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'navdrawer.dart';
 
+// the welcome UI page
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

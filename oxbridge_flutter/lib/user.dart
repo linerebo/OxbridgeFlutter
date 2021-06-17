@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'http_service.dart';
 import 'navdrawer.dart';
 
+//take user input from the UI to create new User
 class AddUser extends StatefulWidget {
   @override
   UserState createState() => UserState();

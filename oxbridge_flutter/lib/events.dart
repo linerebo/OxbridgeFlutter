@@ -6,6 +6,7 @@ import 'event_model.dart';
 class GetEvents extends StatelessWidget {
   final HttpService httpService = HttpService();
 
+//retrieve all events and show in the UI
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +23,8 @@ class GetEvents extends StatelessWidget {
                 ?.map((Event event) => ListTile(
                     title: Text(event.name),
                     tileColor: Colors.lightBlue.shade50,
-                    subtitle: Text("Start:  " + event.eventStart + "\n" + "End:    " + event.eventEnd + "\n" + "City:   " + event.city)))
+                    subtitle: Text("Start:  " + event.eventStart + "\n" + "End:    " 
+                    + event.eventEnd + "\n" + "City:   " + event.city)))
                 .toList();
             return ListView(children: mychildren ?? []);
           } else {

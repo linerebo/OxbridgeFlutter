@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+//Navigation drawer to show menu for UI navigation
 class NavDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -15,9 +16,6 @@ class NavDrawer extends StatelessWidget {
               ),
               decoration: BoxDecoration(
                 color: Colors.green,
-                //image: DecorationImage(
-                //fit: BoxFit.fill,
-                //image: AssetImage('assets/images/cover.jpg')),
               )),
           ListTile(
             leading: Icon(Icons.home),

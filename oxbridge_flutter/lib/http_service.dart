@@ -8,10 +8,10 @@ import 'event_model.dart';
 class HttpService {
   //final String userURL = 'http://10.0.2.2:3000/users/register';
   final String userURL = 'http://localhost:3000/users/register';
-  //final String userURL = "http://192.168.178.46:3000/users/register";
 
   final String eventsURL = "http://localhost:3000/events";
 
+// method for post a new user to the backend
   Future<User> createUser(String firstname, String lastname,
       String emailUsername, String password) async {
     final Response response = await post(Uri.parse(userURL),
@@ -38,6 +38,7 @@ class HttpService {
     }
   }
 
+// method to get all events from the backend
   Future<List<Event>> getEvents() async {
     final Response response = await get(Uri.parse(eventsURL));
 

@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 
+//model class for User
 class User {
   final String firstname;
   final String lastname;
